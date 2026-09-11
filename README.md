@@ -2,7 +2,7 @@
 
 Source for the donor-facing "Frontier Leadership" page. One HTML file with its styles inline, a small badge stylesheet, and the TFA logo set. No build step, no framework, no JavaScript beyond the scroll animations already in `index.html`.
 
-Live at https://www.teachforamericawashington.com (GitHub Pages, served from the `main` branch of this repo). Every commit to `main` republishes the site, usually within a minute or two. Hard refresh if you still see the old version.
+Live at https://www.teachwashington.com (GitHub Pages, served from the `main` branch of this repo). Every commit to `main` republishes the site, usually within a minute or two. Hard refresh if you still see the old version.
 
 Project background, the donor-journey rationale, the verified alumni list with sources, and the archived v1 multi-page version all live in the private repo [levimogg/tfa-wa-donor-hub](https://github.com/levimogg/tfa-wa-donor-hub) (see `PROJECT.md` there).
 
@@ -28,7 +28,7 @@ Edit on GitHub (open the file, pencil icon, commit) or clone the repo and edit l
 ## Hosting
 
 - GitHub Pages: Settings > Pages, source `main` / root.
-- Custom domain: `www.teachforamericawashington.com`, set in Settings > Pages and recorded in `CNAME`.
+- Custom domain: `www.teachwashington.com`, set in Settings > Pages and recorded in `CNAME`.
 - DNS at the registrar:
   - `www` CNAME record pointing to `levimogg.github.io`
   - Apex (`@`) A records pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, so the bare domain redirects to `www`
