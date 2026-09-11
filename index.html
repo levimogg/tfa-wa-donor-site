@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="logos/tfa_logo_1L_cream_FFEED4.svg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TFA Washington — Frontier Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #76CEE1;
+  --navy: #00225A;
+  --red: #EF322D;
+  --maroon: #4B0000;
+  --cream: #FFEED4;
+  --black: #110E05;
+  --charcoal: #424039;
+  --stone: #8B8A86;
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--black);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.serif { font-family: 'Libre Baskerville', Georgia, serif; }
+
+/* ---- Animations ---- */
+@keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+
+.fade-section { opacity:0; transform:translateY(40px); transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1); }
+.fade-section.visible { opacity:1; transform:translateY(0); }
+
+/* Stagger children */
+.fade-section.visible .stagger { opacity:0; animation: fadeUp 0.6s cubic-bezier(.16,1,.3,1) forwards; }
+.fade-section.visible .stagger:nth-child(1) { animation-delay: 0.1s; }
+.fade-section.visible .stagger:nth-child(2) { animation-delay: 0.2s; }
+.fade-section.visible .stagger:nth-child(3) { animation-delay: 0.3s; }
+.fade-section.visible .stagger:nth-child(4) { animation-delay: 0.4s; }
+.fade-section.visible .stagger:nth-child(5) { animation-delay: 0.5s; }
+.fade-section.visible .stagger:nth-child(6) { animation-delay: 0.6s; }
+
+/* ---- Layout ---- */
+.contain { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+.contain--wide { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+/* ---- Nav ---- */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 40px;
+  background: rgba(75,0,0,0.95);
+  backdrop-filter: blur(20px);
+  transition: all 0.4s;
+}
+nav.scrolled { padding:12px 40px; box-shadow: 0 2px 40px rgba(0,0,0,0.2); }
+nav .brand { display:flex; align-items:center; gap:12px; }
+nav .brand img { height:24px; }
+nav .brand span { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); opacity:0.7; }
+nav .links { display:flex; gap:28px; list-style:none; }
+nav .links a { font-size:12px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--cream); opacity:0.5; text-decoration:none; transition:opacity 0.2s; }
+nav .links a:hover { opacity:1; }
+
+/* ---- Section base ---- */
+.section { padding: 140px 0; position: relative; }
+.section--hero { min-height:100vh; display:flex; align-items:center; background:var(--maroon); overflow:hidden; padding:120px 0 100px; }
+.section--dark { background:var(--maroon); color:var(--cream); }
+.section--cream { background:var(--cream); }
+.section--blue { background:var(--blue); }
+
+/* ---- Typography ---- */
+h1, h2 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(2.8rem, 5.5vw, 4.8rem); color: var(--cream); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--maroon); }
+.section--dark h2 { color: var(--cream); }
+h2 em { font-style:normal; color:var(--blue); }
+h1 em { font-style:normal; color:var(--blue); }
+
+.section-label {
+  display:inline-block; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--blue); padding:8px 16px; border:1px solid rgba(118,206,225,0.3); border-radius:100px;
+  margin-bottom:28px; background:rgba(118,206,225,0.05);
+}
+.section--dark .section-label { border-color:rgba(118,206,225,0.2); background:rgba(118,206,225,0.08); }
+
+/* ---- Hero ---- */
+.hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.hero-content { animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.2s both; }
+.hero-text { font-size:17px; line-height:1.8; color:rgba(255,238,212,0.65); max-width:500px; margin:28px 0 48px; }
+.hero-image { animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.5s both; }
+.hero-image-frame {
+  aspect-ratio:4/5; border-radius:12px; overflow:hidden; position:relative;
+  background: linear-gradient(135deg, rgba(118,206,225,0.12), rgba(75,0,0,0.3));
+  border:1px solid rgba(118,206,225,0.1);
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-image-frame span { font-size:13px; color:rgba(255,238,212,0.3); text-align:center; padding:40px; }
+.hero-badge {
+  position:absolute; bottom:-12px; right:-12px; background:var(--blue); color:var(--maroon);
+  padding:14px 22px; border-radius:8px; font-size:13px; font-weight:600; animation:float 4s ease-in-out infinite;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display:inline-flex; align-items:center; gap:8px; padding:16px 32px; border-radius:4px;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.06em;
+  text-transform:uppercase; text-decoration:none; transition:all 0.25s; border:none; cursor:pointer;
+}
+.btn--red { background:var(--red); color:var(--white); }
+.btn--red:hover { background:#d62b27; transform:translateY(-1px); box-shadow:0 8px 24px rgba(239,50,45,0.3); }
+.btn--ghost { background:transparent; color:var(--cream); border:1px solid rgba(255,238,212,0.25); }
+.btn--ghost:hover { border-color:var(--cream); }
+.btn--dark { background:var(--maroon); color:var(--cream); }
+.btn--dark:hover { background:#3a0000; transform:translateY(-1px); }
+.btn-group { display:flex; gap:16px; flex-wrap:wrap; }
+
+/* ---- Stats ---- */
+.stat-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:48px; margin:64px 0; }
+.stat-item { text-align:center; }
+.stat-num {
+  font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(2.4rem,4vw,3.4rem);
+  font-weight:700; line-height:1; color:var(--maroon); display:block; margin-bottom:10px;
+}
+.section--dark .stat-num { color:var(--blue); }
+.stat-label { font-size:14px; color:var(--charcoal); line-height:1.5; }
+.section--dark .stat-label { color:rgba(255,238,212,0.5); }
+.stat-source { font-size:11px; color:var(--stone); margin-top:4px; }
+
+/* ---- Bar charts ---- */
+.chart-section { display:grid; grid-template-columns:1fr 1fr; gap:80px; margin:64px 0; }
+.chart-block h3 { font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--charcoal); margin-bottom:36px; }
+.bar-chart { display:flex; flex-direction:column; gap:18px; }
+.bar-row { display:grid; grid-template-columns:130px 1fr 55px; align-items:center; gap:14px; }
+.bar-label { font-size:13px; font-weight:500; color:var(--charcoal); text-align:right; }
+.bar-track { height:32px; background:rgba(75,0,0,0.04); border-radius:4px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:4px; transition:width 1.5s cubic-bezier(.16,1,.3,1); width:0; }
+.bar-fill--blue { background:var(--blue); }
+.bar-fill--maroon { background:var(--maroon); }
+.bar-fill--red { background:var(--red); }
+.bar-value { font-family:'Libre Baskerville',Georgia,serif; font-size:17px; font-weight:700; color:var(--maroon); }
+.chart-source { font-size:11px; color:var(--stone); margin-top:12px; }
+.chart-source a { color:var(--stone); text-decoration:underline; text-underline-offset:2px; }
+
+/* ---- Pipeline ---- */
+.pipeline {
+  background:var(--maroon); border-radius:16px; padding:56px; margin:64px 0; position:relative; overflow:hidden;
+}
+.pipeline::before { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(118,206,225,0.06) 0%,transparent 70%); }
+.pipeline h3 { font-family:'Libre Baskerville',Georgia,serif; font-size:1.3rem; font-weight:700; color:var(--cream); margin-bottom:10px; }
+.pipeline > p { font-size:15px; color:rgba(255,238,212,0.45); margin-bottom:48px; max-width:500px; }
+.pipeline-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+.pipeline-stage { text-align:center; padding:0 20px; position:relative; }
+.pipeline-stage::after { content:'→'; position:absolute; right:-8px; top:24px; font-size:22px; color:rgba(118,206,225,0.3); }
+.pipeline-stage:last-child::after { display:none; }
+.pipeline-pct { display:block; font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(2.2rem,4vw,3.4rem); font-weight:700; line-height:1; margin-bottom:10px; }
+.pipeline-stage:nth-child(1) .pipeline-pct { color:var(--blue); }
+.pipeline-stage:nth-child(2) .pipeline-pct { color:rgba(118,206,225,0.6); }
+.pipeline-stage:nth-child(3) .pipeline-pct { color:var(--red); }
+.pipeline-bar { width:100%; height:5px; background:rgba(255,238,212,0.08); border-radius:3px; margin:14px 0; overflow:hidden; }
+.pipeline-bar-fill { height:100%; border-radius:3px; transition:width 1.5s cubic-bezier(.16,1,.3,1) 0.3s; width:0; }
+.pipeline-desc { font-size:13px; color:rgba(255,238,212,0.45); line-height:1.5; }
+
+/* ---- Pullquote ---- */
+.pullquote-section { padding:100px 0; text-align:center; }
+.pullquote {
+  font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(1.5rem,2.8vw,2.2rem);
+  line-height:1.45; color:var(--maroon); max-width:720px; margin:0 auto; padding:0 40px;
+}
+.section--dark .pullquote { color:var(--cream); }
+.pullquote em { font-style:normal; color:var(--red); position:relative; }
+.pullquote em::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:3px; background:var(--red); opacity:0.25; }
+.pullquote strong { color:var(--blue); font-weight:700; font-style:normal; }
+
+/* ---- Three column ---- */
+.trio { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(75,0,0,0.06); border-radius:12px; overflow:hidden; margin-top:56px; }
+.trio-item { background:var(--white); padding:44px 36px; }
+.section--cream .trio-item { background:var(--cream); }
+.trio-num { font-family:'Libre Baskerville',Georgia,serif; font-size:3.5rem; font-weight:700; color:rgba(75,0,0,0.05); line-height:1; margin-bottom:14px; }
+.trio-item h3 { font-family:'Libre Baskerville',Georgia,serif; font-size:1.15rem; font-weight:700; color:var(--maroon); margin-bottom:10px; }
+.trio-item p { font-size:15px; line-height:1.65; color:var(--charcoal); }
+
+/* ---- TFA 101 Model ---- */
+.model-flow { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:rgba(118,206,225,0.15); border-radius:12px; overflow:hidden; margin:56px 0; }
+.model-flow-step { background:var(--maroon); padding:36px 28px; text-align:center; }
+.model-flow-num { font-family:'Libre Baskerville',Georgia,serif; font-size:2rem; font-weight:700; color:var(--blue); opacity:0.4; margin-bottom:8px; }
+.model-flow-step h3 { font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; color:var(--cream); margin-bottom:8px; }
+.model-flow-step p { font-size:13px; line-height:1.5; color:rgba(255,238,212,0.45); }
+
+/* ---- Steps (Frontier Leadership) ---- */
+.steps { margin-top:64px; display:grid; gap:48px; }
+.step { display:grid; grid-template-columns:200px 1fr; gap:40px; align-items:start; }
+.step-left { display:flex; flex-direction:column; justify-content:start; padding-top:4px; }
+.step-num { font-family:'Libre Baskerville',Georgia,serif; font-size:4.5rem; font-weight:700; color:rgba(118,206,225,0.15); line-height:1; }
+.step-right h3 { font-family:'Libre Baskerville',Georgia,serif; font-size:1.4rem; font-weight:700; color:var(--maroon); margin-bottom:12px; }
+.step-right p { font-size:16px; line-height:1.7; color:var(--charcoal); }
+
+/* ---- Alumni Grid ---- */
+.alumni-section { padding:140px 0; }
+.alumni-tier { margin-bottom:80px; }
+.alumni-tier:last-child { margin-bottom:0; }
+.alumni-tier-label { font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); margin-bottom:28px; }
+.alumni-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2px; background:rgba(75,0,0,0.06); border-radius:12px; overflow:hidden; }
+.alumni-card { background:var(--white); padding:32px 28px; }
+.alumni-card .photo {
+  width:72px; height:72px; border-radius:50%; margin-bottom:16px;
+  background:linear-gradient(135deg, rgba(118,206,225,0.12), rgba(75,0,0,0.08));
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--stone);
+}
+.alumni-card h4 { font-family:'Libre Baskerville',Georgia,serif; font-size:1rem; font-weight:700; color:var(--maroon); margin-bottom:4px; }
+.alumni-card .role { font-size:13px; color:var(--charcoal); line-height:1.4; margin-bottom:4px; }
+.alumni-card .corps { font-size:11px; color:var(--stone); }
+
+/* ---- Invest ---- */
+.invest-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:rgba(75,0,0,0.06); border-radius:12px; overflow:hidden; margin-top:56px; }
+.invest-card { background:var(--white); padding:44px; transition:background 0.3s; }
+.invest-card:hover { background:var(--cream); }
+.invest-amount { font-family:'Libre Baskerville',Georgia,serif; font-size:1.8rem; font-weight:700; color:var(--maroon); display:block; margin-bottom:4px; }
+.invest-card h3 { font-family:'Libre Baskerville',Georgia,serif; font-size:1rem; font-weight:700; color:var(--maroon); margin-bottom:10px; }
+.invest-card p { font-size:14px; line-height:1.65; color:var(--charcoal); }
+
+/* ---- CTA ---- */
+.cta-section { padding:160px 0; text-align:center; }
+.cta-section h2 { color:var(--navy); margin-bottom:20px; }
+.cta-section p { font-size:17px; color:var(--navy); opacity:0.7; max-width:520px; margin:0 auto 40px; }
+
+/* ---- Evidence links ---- */
+.evidence { margin-top:48px; padding-top:32px; border-top:1px solid rgba(75,0,0,0.06); }
+.evidence p { font-size:13px; color:var(--stone); }
+.evidence a { color:var(--maroon); text-decoration:underline; text-underline-offset:2px; }
+.section--dark .evidence { border-top-color:rgba(255,238,212,0.08); }
+.section--dark .evidence a { color:var(--blue); }
+
+/* ---- Footer ---- */
+footer { padding:40px; text-align:center; font-size:12px; color:var(--stone); border-top:1px solid rgba(75,0,0,0.04); }
+footer a { color:var(--maroon); text-decoration:underline; text-underline-offset:2px; }
+
+/* ---- Responsive ---- */
+@media (max-width:1024px) {
+  .hero-grid { grid-template-columns:1fr; gap:48px; }
+  .hero-image { max-width:400px; }
+  .chart-section { grid-template-columns:1fr; gap:48px; }
+  .model-flow { grid-template-columns:repeat(2,1fr); }
+  .step { grid-template-columns:100px 1fr; gap:24px; }
+  .step-num { font-size:3rem; }
+}
+@media (max-width:768px) {
+  nav .links { display:none; }
+  .contain, .contain--wide { padding:0 24px; }
+  .section { padding:100px 0; }
+  .trio { grid-template-columns:1fr; }
+  .model-flow { grid-template-columns:1fr; }
+  .pipeline-flow { grid-template-columns:1fr; gap:32px; }
+  .pipeline-stage::after { display:none; }
+  .pipeline { padding:36px 28px; }
+  .bar-row { grid-template-columns:90px 1fr 45px; gap:8px; }
+  .step { grid-template-columns:1fr; }
+  .step-num { font-size:2.5rem; }
+  .invest-grid { grid-template-columns:1fr; }
+  .alumni-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:480px) {
+  .alumni-grid { grid-template-columns:1fr; }
+}
+</style>
+  <link rel="stylesheet" href="mockup.css">
+</head>
+<body>
+  <div class="mockup-flag" role="note">MOCKUP | INTERNAL REVIEW</div>
+
+<nav id="navbar">
+  <a href="#" class="brand">
+    <img src="logos/tfa_logo_1L_cream_FFEED4.svg" alt="Teach For America">
+    <span>Washington</span>
+  </a>
+  <div class="links">
+    <a href="#crisis">The Crisis</a>
+    <a href="#tfa101">Who We Are</a>
+    <a href="#washington">Washington</a>
+    <a href="#strategy">Our Strategy</a>
+    <a href="#alumni">Leaders</a>
+    <a href="#invest">Invest</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="section section--hero">
+  <div class="contain--wide">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="section-label">Teach For America Washington</span>
+        <h1>Every student<br>deserves a future<br>worth <em>reaching for</em></h1>
+        <p class="hero-text">For 35 years, Teach For America has recruited our nation's most promising leaders and placed them where they're needed most. In Washington, we're proving that leadership is the lever that changes systems.</p>
+        <div class="btn-group">
+          <a class="btn btn--red" href="#crisis">See the crisis</a>
+          <a class="btn btn--ghost" href="#tfa101">Who we are</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-frame">
+          <span>Corps member or student photo</span>
+        </div>
+        <div class="hero-badge">35 years. 67,000 leaders.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE CRISIS ===== -->
+<section id="crisis" class="section fade-section">
+  <div class="contain">
+    <span class="section-label">The Crisis</span>
+    <h2>Washington is leaving students <em>behind</em></h2>
+    <p style="max-width:600px; color:var(--charcoal); margin-top:16px;">We often hear that Washington has a strong education system. The data tells a different story — one defined by race, income, and geography.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="chart-section">
+      <div class="chart-block stagger">
+        <h3>8th Grade Math Proficiency</h3>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">All students</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--blue" data-width="30"></div></div>
+            <span class="bar-value">30%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">High-poverty</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--maroon" data-width="13"></div></div>
+            <span class="bar-value">13%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Black & Latino</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--red" data-width="12"></div></div>
+            <span class="bar-value">12%</span>
+          </div>
+        </div>
+        <p class="chart-source">Source: <a href="https://nces.ed.gov/nationsreportcard/">NAEP 2024</a></p>
+      </div>
+      <div class="chart-block stagger">
+        <h3>Washington vs. Massachusetts</h3>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">Massachusetts</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--blue" data-width="43"></div></div>
+            <span class="bar-value">43%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Washington</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--maroon" data-width="30"></div></div>
+            <span class="bar-value">30%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">WA low-income</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--red" data-width="13"></div></div>
+            <span class="bar-value">13%</span>
+          </div>
+        </div>
+        <p class="chart-source">Source: <a href="https://nces.ed.gov/nationsreportcard/">NAEP</a> · <a href="https://edopportunity.org/">EdOpportunity</a></p>
+      </div>
+    </div>
+
+    <div class="pipeline fade-section">
+      <h3>The postsecondary pipeline is collapsing</h3>
+      <p>For low-income students in Washington, ambition is not the problem. The system is.</p>
+      <div class="pipeline-flow">
+        <div class="pipeline-stage">
+          <span class="pipeline-pct">88%</span>
+          <div class="pipeline-bar"><div class="pipeline-bar-fill" data-width="88" style="background:var(--blue);"></div></div>
+          <span class="pipeline-desc">Aspire to college</span>
+        </div>
+        <div class="pipeline-stage">
+          <span class="pipeline-pct">~50%</span>
+          <div class="pipeline-bar"><div class="pipeline-bar-fill" data-width="50" style="background:rgba(118,206,225,0.6);"></div></div>
+          <span class="pipeline-desc">Enroll within one year</span>
+        </div>
+        <div class="pipeline-stage">
+          <span class="pipeline-pct">&lt;40%</span>
+          <div class="pipeline-bar"><div class="pipeline-bar-fill" data-width="38" style="background:var(--red);"></div></div>
+          <span class="pipeline-desc">Complete a credential</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contain">
+    <div class="evidence">
+      <p>Explore the data: <a href="https://edopportunity.org/">EdOpportunity (Stanford/Harvard)</a> · <a href="https://edunomicslab.org/washington-roi-over-time/">Edunomics Lab (Georgetown)</a> · <a href="https://nces.ed.gov/nationsreportcard/">NAEP</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PULLQUOTE ===== -->
+<div class="section--cream pullquote-section fade-section">
+  <p class="pullquote">Washington is not failing on average. It is <em>failing specifically</em> — and the students who most need the system to work are the ones it is leaving behind.</p>
+</div>
+
+<!-- ===== TFA 101 ===== -->
+<section id="tfa101" class="section fade-section">
+  <div class="contain">
+    <span class="section-label">Who We Are</span>
+    <h2>35 years of finding leaders and putting them <em>where they matter most</em></h2>
+    <p style="max-width:620px; color:var(--charcoal); margin-top:16px;">Teach For America recruits and selects our nation's most promising leaders — people who are undeterred by the challenges facing education and committed to creating change. We know our model works: students taught by corps members and alumni achieve greater outcomes and outperform their peers.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="stat-row" style="margin-top:64px;">
+      <div class="stat-item stagger">
+        <span class="stat-num">67,000+</span>
+        <span class="stat-label">leaders recruited over 35 years</span>
+      </div>
+      <div class="stat-item stagger">
+        <span class="stat-num">+2.6 mo</span>
+        <span class="stat-label">additional learning in TFA math classrooms</span>
+        <span class="stat-source"><a href="https://www.mathematica.org/publications/an-effectiveness-assessment-of-teach-for-america" style="color:var(--stone); text-decoration:underline;">Mathematica RCT</a></span>
+      </div>
+      <div class="stat-item stagger">
+        <span class="stat-num">67%</span>
+        <span class="stat-label">of alumni still work in education</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE MODEL ===== -->
+<div class="section section--dark fade-section">
+  <div class="contain">
+    <span class="section-label">Our Proven Model</span>
+    <h2>Find. Support. Develop. <em>Lead.</em></h2>
+    <p style="color:rgba(255,238,212,0.55); max-width:550px; margin-top:16px;">A four-stage pipeline that turns promising leaders into systems-change agents.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="model-flow">
+      <div class="model-flow-step stagger">
+        <div class="model-flow-num">01</div>
+        <h3>Find promising leaders</h3>
+        <p>Recruit people who commit to teach for two years in a low-income community.</p>
+      </div>
+      <div class="model-flow-step stagger">
+        <div class="model-flow-num">02</div>
+        <h3>Support educators</h3>
+        <p>Advance students' growth and strengthen schools through intensive coaching.</p>
+      </div>
+      <div class="model-flow-step stagger">
+        <div class="model-flow-num">03</div>
+        <h3>Develop leaders</h3>
+        <p>Cultivate long-term leadership through the crucible of classroom teaching.</p>
+      </div>
+      <div class="model-flow-step stagger">
+        <div class="model-flow-num">04</div>
+        <h3>Foster collective impact</h3>
+        <p>Support community among alumni throughout their lifetime as their careers take shape.</p>
+      </div>
+    </div>
+    <div class="evidence" style="border-top-color:rgba(255,238,212,0.08);">
+      <p style="color:rgba(255,238,212,0.35);">Research: <a href="https://www.mathematica.org/publications/the-effects-of-teach-for-america-on-students-findings-from-a-national-evaluation" style="color:var(--blue);">Mathematica RCT on TFA effectiveness</a> · <a href="https://www.wallacefoundation.org/knowledge-center/pages/how-principals-affect-students-and-schools.aspx" style="color:var(--blue);">Wallace Foundation on principal impact</a> · <a href="https://doi.org/10.1002/pam.20585" style="color:var(--blue);">Xu, Hannaway & Taylor (2011)</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WASHINGTON ===== -->
+<section id="washington" class="section fade-section">
+  <div class="contain">
+    <span class="section-label">In Washington</span>
+    <h2>A growing network of leaders <em>changing the system</em> from within</h2>
+    <p style="max-width:600px; color:var(--charcoal); margin-top:16px;">Since 2011, TFA Washington has built a deep network of leaders across the state — in classrooms, schools, districts, and beyond.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="stat-row">
+      <div class="stat-item stagger"><span class="stat-num">1,500+</span><span class="stat-label">alumni in Washington</span></div>
+      <div class="stat-item stagger"><span class="stat-num">50+</span><span class="stat-label">school principals and APs</span></div>
+      <div class="stat-item stagger"><span class="stat-num">60+</span><span class="stat-label">school leaders</span></div>
+      <div class="stat-item stagger"><span class="stat-num">65,000+</span><span class="stat-label">students impacted</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY IT PERSISTS ===== -->
+<div class="section section--cream fade-section">
+  <div class="contain">
+    <span class="section-label">Why It Persists</span>
+    <h2>Funding has increased. Outcomes <em>haven't.</em></h2>
+    <p style="max-width:600px; color:var(--charcoal); margin-top:16px;">Washington has 295 independent districts, strong unions, and deep local control. That produces innovation — and fragmentation. There is no single lever to pull.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="trio">
+      <div class="trio-item stagger">
+        <div class="trio-num">295</div>
+        <h3>Fragmented</h3>
+        <p>Independent districts. What works in one school rarely becomes standard in the next.</p>
+      </div>
+      <div class="trio-item stagger">
+        <div class="trio-num">↑$</div>
+        <h3>Misaligned</h3>
+        <p>Spending has risen. Outcomes haven't followed. The problem is not the size of the investment.</p>
+      </div>
+      <div class="trio-item stagger">
+        <div class="trio-num">AI</div>
+        <h3>Outdated</h3>
+        <p>54% of students use AI. Only 19% have guided instruction. Schools are preparing students for an economy that no longer exists.</p>
+      </div>
+    </div>
+    <div class="evidence">
+      <p>Research: <a href="https://edunomicslab.org/washington-roi-over-time/">Edunomics Lab — WA spending vs. outcomes</a> · <a href="https://edopportunity.org/">EdOpportunity — district-level data</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MECHANISM ===== -->
+<div class="section section--dark pullquote-section fade-section" style="padding:120px 0;">
+  <div class="contain">
+    <span class="section-label">The Insight</span>
+    <p class="pullquote" style="margin-top:24px;">In decentralized systems, change does not spread through mandates or money. It spreads through <strong>visible proof that peers trust</strong>.</p>
+  </div>
+</div>
+
+<!-- ===== FRONTIER LEADERSHIP ===== -->
+<section id="strategy" class="section fade-section">
+  <div class="contain">
+    <span class="section-label">Our Strategy</span>
+    <h2>Build leaders. Concentrate proof. Let demand <em>spread the model.</em></h2>
+    <p style="max-width:600px; color:var(--charcoal); margin-top:16px;">We are not trying to control the system. We are building the mechanism that moves it.</p>
+
+    <div class="steps">
+      <div class="step stagger">
+        <div class="step-left"><div class="step-num">01</div></div>
+        <div class="step-right">
+          <h3>Frontier Leaders</h3>
+          <p>We recruit and develop leaders who deliver results in classrooms — and who stay to lead schools and systems. ~40 corps members annually, plus Ignite fellows and 1,400+ alumni. The talent engine behind everything.</p>
+        </div>
+      </div>
+      <div class="step stagger">
+        <div class="step-left"><div class="step-num">02</div></div>
+        <div class="step-right">
+          <h3>Innovative Schools</h3>
+          <p>We concentrate talent in partner schools where students experience agency, mastery, and future-readiness. These schools are the proof — real results in real buildings that neighbors can see.</p>
+        </div>
+      </div>
+      <div class="step stagger">
+        <div class="step-left"><div class="step-num">03</div></div>
+        <div class="step-right">
+          <h3>Proof That Travels</h3>
+          <p>When neighboring principals and districts see results clearly, adoption becomes safe and demand builds. Not because we push — because peers trust what they observe.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="evidence">
+      <p>Research: <a href="https://www.wallacefoundation.org/knowledge-center/pages/how-leadership-influences-student-learning.aspx">Wallace Foundation — leadership as the key lever</a> · <a href="https://doi.org/10.3102/0162373713519496">Kraft & Papay — peer effects on teacher improvement</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOAL ===== -->
+<div class="section--cream pullquote-section fade-section">
+  <p class="pullquote">The goal is not to run the system. The goal is to change what the system <strong>believes is possible</strong>.</p>
+</div>
+
+<!-- ===== ALUMNI LEADERS ===== -->
+<section id="alumni" class="alumni-section section--dark fade-section">
+  <div class="contain">
+    <span class="section-label">Our Leaders</span>
+    <h2>From classrooms to <em>systems change</em></h2>
+    <p style="color:rgba(255,238,212,0.55); max-width:600px; margin-top:16px;">This is the theory of change in human form. Corps members who became teachers, then principals, then the people running districts and shaping policy.</p>
+  </div>
+  <div class="contain--wide">
+
+    <!-- Systems Leaders -->
+    <div class="alumni-tier" style="margin-top:64px;">
+      <div class="alumni-tier-label">Systems Leaders</div>
+      <div class="alumni-grid">
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Heather Tow-Yick</h4>
+          <p class="role">Superintendent, Issaquah School District</p>
+          <p class="corps">Corps '98 · South Bronx</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Caine Lowery</h4>
+          <p class="role">Executive Director, Seattle Public Schools</p>
+          <p class="corps">Corps '06 · Atlanta</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Zoe Stemm-Calderon</h4>
+          <p class="role">Executive Director, Raikes Foundation</p>
+          <p class="corps">Corps '00 · Houston</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Andrea Klein</h4>
+          <p class="role">Executive Director, Summit Sierra (Seattle)</p>
+          <p class="corps">Corps '06 · Newark</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Peter Scott</h4>
+          <p class="role">Deputy Superintendent, Everett Public Schools</p>
+          <p class="corps">Corps '98</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Jacqueline Downey</h4>
+          <p class="role">Asst. Superintendent, Issaquah School District</p>
+          <p class="corps">Corps '10 · Denver</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>John Schmitz</h4>
+          <p class="role">Chief of Schools, Renton School District</p>
+          <p class="corps">Corps '91</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Tatiana Epanchin</h4>
+          <p class="role">Co-Founder, Catalyst Public Schools</p>
+          <p class="corps">Corps '93 · New Orleans</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- School Leaders -->
+    <div class="alumni-tier">
+      <div class="alumni-tier-label">School Leaders</div>
+      <div class="alumni-grid">
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Andre Stemm-Calderon</h4>
+          <p class="role">Principal, Kennydale Elementary, Renton SD</p>
+          <p class="corps">Corps '99</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Tracey Naylor Tymczyszyn</h4>
+          <p class="role">Principal, Dimmitt Middle School, Renton SD</p>
+          <p class="corps">Corps '06 · Phoenix</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Corbin Busby</h4>
+          <p class="role">Principal, Hilltop Elementary, Highline PS</p>
+          <p class="corps">Corps '10 · San Antonio</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rising Leaders -->
+    <div class="alumni-tier">
+      <div class="alumni-tier-label">Rising Leaders</div>
+      <div class="alumni-grid">
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Baron You</h4>
+          <p class="role">Assistant Principal, Renton School District</p>
+          <p class="corps">Corps '06</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Tim Tran</h4>
+          <p class="role">Vice Principal, Rainier Prep Charter School</p>
+          <p class="corps">Corps '10 · Houston</p>
+        </div>
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Sunny Sinco</h4>
+          <p class="role">Asst. Principal, Cascade MS, Highline PS</p>
+          <p class="corps">Corps '12</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Innovators -->
+    <div class="alumni-tier">
+      <div class="alumni-tier-label">Innovators</div>
+      <div class="alumni-grid">
+        <div class="alumni-card stagger">
+          <div class="photo">Photo</div>
+          <h4>Dan Effland</h4>
+          <p class="role">Sr. Director of Innovation, Summit Public Schools</p>
+          <p class="corps">Corps '14 · Chicago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPACT ===== -->
+<section class="section fade-section">
+  <div class="contain">
+    <span class="section-label">By 2030</span>
+    <h2>What we are <em>building</em></h2>
+  </div>
+  <div class="contain--wide">
+    <div class="stat-row">
+      <div class="stat-item stagger"><span class="stat-num">10</span><span class="stat-label">innovative schools demonstrating what's possible</span></div>
+      <div class="stat-item stagger"><span class="stat-num">~5,000</span><span class="stat-label">students directly served</span></div>
+      <div class="stat-item stagger"><span class="stat-num">90,000</span><span class="stat-label">students reached across the network</span></div>
+    </div>
+  </div>
+  <div class="contain">
+    <p style="color:var(--charcoal); max-width:600px;">A documented model that districts adopt because they watched it work. Principals requesting the playbook. Districts approaching us. Alumni leading schools we never touched — differently, because of what they built here.</p>
+  </div>
+</section>
+
+<!-- ===== INVEST ===== -->
+<section id="invest" class="section section--cream fade-section">
+  <div class="contain">
+    <span class="section-label">Invest</span>
+    <h2>Fund what <em>works</em></h2>
+    <p style="max-width:600px; color:var(--charcoal); margin-top:16px;">You are not funding a program. You are investing in a proof point for how systems change.</p>
+  </div>
+  <div class="contain--wide">
+    <div class="invest-grid">
+      <div class="invest-card stagger">
+        <span class="invest-amount">$5,000</span>
+        <h3>Sponsor a Frontier Leader</h3>
+        <p>Directly supports one corps member's training, coaching, and placement. You're connected to their journey — updates, school visits, impact data.</p>
+      </div>
+      <div class="invest-card stagger">
+        <span class="invest-amount">$10,000+</span>
+        <h3>Strengthen the Pipeline</h3>
+        <p>Funds the Summer Institute, Ignite fellowship, and the leadership development infrastructure that powers everything.</p>
+      </div>
+      <div class="invest-card stagger">
+        <span class="invest-amount">$25,000+</span>
+        <h3>Build an Innovative School</h3>
+        <p>Supports the deep partnership model — concentrated talent, student outcome tracking, and a documented, replicable approach.</p>
+      </div>
+      <div class="invest-card stagger">
+        <span class="invest-amount">$50,000+</span>
+        <h3>Strategic Partnership</h3>
+        <p>Multi-year investment in the full Frontier Leadership strategy. Board-level engagement and partnership in building the proof.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section section--blue cta-section fade-section">
+  <div class="contain">
+    <h2>Let's build this together</h2>
+    <p>Whether you're exploring an initial investment or deepening an existing partnership — we'd welcome the conversation.</p>
+    <a class="btn btn--dark" href="mailto:levi.mogg@teachforamerica.org">Reach out to Levi →</a>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<div class="section pullquote-section" style="padding:100px 0;">
+  <div class="contain">
+    <p style="font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(1.1rem,2vw,1.35rem); font-style:italic; color:var(--maroon); max-width:580px; margin:0 auto; text-align:center; line-height:1.6;">Given your experience leading in complex systems — does this match how you've seen durable change actually happen?</p>
+  </div>
+</div>
+
+<footer>
+  <p>Teach For America Washington · For partner conversations · <a href="https://www.teachforamerica.org">teachforamerica.org</a></p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      entry.target.querySelectorAll('.bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 150);
+      });
+      entry.target.querySelectorAll('.pipeline-bar-fill').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 200);
+      });
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+
+</body>
+</html>
